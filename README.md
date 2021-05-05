@@ -10,3 +10,47 @@
 8) Consider your data model. What objects will you be using? What are the key/value pairs? What arrays do you need? What needs to live in local storage?
 9) Consider what features _depend_ on what other features. Use this dependency logic to figure out what order to complete tasks.
 
+## HTML Setup
+
+1) Radio Buttons
+    -Rock
+    -Paper
+    -Scissors
+    -Why: To give the user something to input
+
+2) Submit Button
+    -button tags
+    -event listener
+        -Why: initialize record of user change state 
+    
+3) 4 divs
+    -Results (win/lose)
+    -# total games played
+    -# total games won
+    -# total losses `total - wins`
+        -Why: Show the user record of state
+
+4) Reset Button
+    -button tags, event listener
+        -Why: For user to restart game from scratch, clean win-loss record.
+
+## State
+1)Computer's choice (rock, paper, scissors)
+2)Total # games
+3) total # wins
+4) Total # losses
+5) Stretch: Success %
+
+
+## Events
+
+On Submit button click:
+    - Get computer's choice
+        -change computer's choice state
+    -Get the user's choice from the radio button
+    -compare user and computer choice
+    -update state
+        -wins
+        -losses
+        -games played
+    -Present results in the DOM
