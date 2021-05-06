@@ -1,5 +1,5 @@
 // IMPORT MODULES under test here:
-import { userWin, userLose, gameDraw } from '../utils.js';
+import { userWin, userLose, gameDraw, randomThrow } from '../utils.js';
 
 const test = QUnit.test;
 
@@ -41,6 +41,20 @@ test('Should show that the game is a draw if user and computer choose the same n
     //Act 
     // Call the function you're testing and set the result to a const
     const actual = gameDraw('Bo', 'Bo');
+
+    //Expect
+    // Make assertions about what is expected versus the actual result
+    expect.equal(actual, expected);
+});
+
+test('Should show return a string as computers choice on game results', (expect) => {
+    //Arrange
+    // Set up your arguments and expectations
+    const expected = 'string';
+    
+    //Act 
+    // Call the function you're testing and set the result to a const
+    const actual = randomThrow(3);
 
     //Expect
     // Make assertions about what is expected versus the actual result

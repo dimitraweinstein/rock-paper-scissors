@@ -1,3 +1,13 @@
+export function randomThrow(computerThrow) {
+    if ((computerThrow === 1))
+        return 'Ro';
+    if ((computerThrow === 2))
+        return 'Sham';
+    if ((computerThrow === 3))
+        return 'Bo';
+}
+
+
 export function userWin(userThrow, computerThrow) {
     if ((userThrow === 'Ro' && computerThrow === 'Bo')
         || (userThrow === 'Sham' && computerThrow === 'Ro')

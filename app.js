@@ -1,10 +1,12 @@
-import { userWin, userLose, gameDraw } from './utils.js';
+import { userWin, userLose, gameDraw, randomThrow } from './utils.js';
 
 // import functions and grab DOM elements
 const submitButton = document.querySelector('#submit-button');
 const gameResultsDiv = document.querySelector('#game-results-div');
 const totalGamesDiv = document.querySelector('#total-games-div');
 const userWinDiv = document.querySelector('#user-win-div');
+const userLossesDiv = document.querySelector('user-losses-div');
+const totalDrawDiv = document.querySelector('total-draw-div');
 const resetButton = document.querySelector('#reset-button');
 
 // initialize state
@@ -17,42 +19,42 @@ let totalDraw = 0;
 // set event listeners to update state and DOM
 submitButton.addEventListener('click', () => {
 
-    const computerThrow = Math.ceil(Math.random('Ro', 'Sham', 'Bo') * 3);
+    const computerThrow = Math.ceil(Math.random() * 3);
+    const computerRandomThrow = randomThrow(computerThrow);
     const chosenThrow = document.querySelector('input:checked');
     const userThrow = chosenThrow.value;
 
+    randomThrow(computerThrow);
     userWin(userThrow, computerThrow);
     userLose(userThrow, computerThrow);
     gameDraw(userThrow, computerThrow);
-
-    if (userWin) {
+    
+    if (userWin === 'win') {
         totalWins++;
         totalGames++;
-        gameResultsDiv.textContent = `Congratulations! ${userThrow} beats ${computerThrow}. You win!`;
-    } else if (userLose) {
+        totalGamesDiv.textContent = `${totalGames}`;
+        gameResultsDiv.textContent = `Congratulations! ${userThrow} beats ${computerRandomThrow}. You win!`;
+    } else if (userLose === 'lose') {
         totalLosses++;
         totalGames++;
-        gameResultsDiv.textContent = `Sorry! ${computerThrow} beats ${userThrow}. You lose!`;
+        totalGamesDiv.textContent = `${totalGames}`;
+        gameResultsDiv.textContent = `Sorry! ${computerRandomThrow} beats ${userThrow}. You lose!`;
     } else {
         totalDraw++; 
         totalGames++;
-        totalGamesDiv.textContent = totalGames;
-        gameResultsDiv.textContent = `${userThrow} and ${computerThrow} are the same. The game is a draw. Try again.`;
+        totalGamesDiv.textContent = `${totalGames}`;
+        gameResultsDiv.textContent = `${userThrow} and ${computerRandomThrow} are the same. The game is a draw. Try again.`;
     }
 
 
-    userWinDiv.textContent = totalWins;
-    
+    userWinDiv.textContent = `${totalWins}`;
+    userLossesDiv.textContent = `${totalLosses}`;
+    totalDrawDiv.textContent = `${totalDraw}`;
 
 });
     
 
-                // On Submit button click:
-                // - Get computer's choice
-                // -Get the user's choice from the radio button
-                // -compare user and computer choice
-                // -update state
-                //     -wins
-                //     -losses
-                //     -games played
-                // -Present results in the DOM
+resetButton.addEventListener('click', () => {
+
+
+});
