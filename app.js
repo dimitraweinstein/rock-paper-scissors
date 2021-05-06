@@ -1,11 +1,11 @@
-import { compareThrow } from "./utils";
+import { userWin, userLose, gameDraw } from './utils.js';
 
 // import functions and grab DOM elements
-const submitButton = document.querySelector('submit-button');
-const gameResultsDiv = document.querySelector('game-results-div');
-const totalGamesDiv = document.querySelector('total-games-div');
-const userWinsDiv = document.querySelector('user-wins-div');
-const resetButton = document.querySelector('reset-button');
+const submitButton = document.querySelector('#submit-button');
+const gameResultsDiv = document.querySelector('#game-results-div');
+const totalGamesDiv = document.querySelector('#total-games-div');
+const userWinsDiv = document.querySelector('#user-wins-div');
+const resetButton = document.querySelector('#reset-button');
 
 // initialize state
 let totalGames = 0;
@@ -16,11 +16,14 @@ let totalDraw = 0;
 
 // set event listeners to update state and DOM
 submitButton.addEventListener('click', () => {
-    let computerThrow = Math.ceil(Math.random() * 3);
+
+    const computerThrow = Math.ceil(Math.random() * 3);
     const chosenThrow = document.querySelector('input:checked');
     const userThrow = chosenThrow.value;
 
-    compareThrow(userThrow, computerThrow);
+    userWin(userThrow, computerThrow);
+    userLose(userThrow, computerThrow);
+    gameDraw(userThrow, computerThrow);
 
     // if (condition) {
         
@@ -28,8 +31,7 @@ submitButton.addEventListener('click', () => {
         
     // }
                 // On Submit button click:
-                //     - Get computer's choice
-                //     -change computer's choice state
+                // - Get computer's choice
                 // -Get the user's choice from the radio button
                 // -compare user and computer choice
                 // -update state
