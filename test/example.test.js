@@ -1,16 +1,46 @@
 // IMPORT MODULES under test here:
-// import { example } from '../example.js';
+import { userWin, userLose, gameDraw } from '../utils.js';
 
 const test = QUnit.test;
 
-test('time to test a function', (expect) => {
+test('Should show that user wins if chosen agains computer', (expect) => {
     //Arrange
     // Set up your arguments and expectations
-    const expected = true;
+    const expected = 'win';
     
     //Act 
     // Call the function you're testing and set the result to a const
-    const actual = true;
+    const actual = userWin('Ro', 'Bo');
+
+    //Expect
+    // Make assertions about what is expected versus the actual result
+    expect.equal(actual, expected);
+});
+
+
+test('should show that user loses against computer', (expect) => {
+    //Arrange
+    // Set up your arguments and expectations
+    const expected = 'lose';
+    
+    //Act 
+    // Call the function you're testing and set the result to a const
+    const actual = userLose('Bo', 'Ro');
+
+    //Expect
+    // Make assertions about what is expected versus the actual result
+    expect.equal(actual, expected);
+});
+
+
+test('Should show that the game is a draw if user and computer choose the same number', (expect) => {
+    //Arrange
+    // Set up your arguments and expectations
+    const expected = 'draw';
+    
+    //Act 
+    // Call the function you're testing and set the result to a const
+    const actual = gameDraw('Bo', 'Bo');
 
     //Expect
     // Make assertions about what is expected versus the actual result

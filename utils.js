@@ -3,7 +3,7 @@ export function userWin(userThrow, computerThrow) {
         || (userThrow === 'Sham' && computerThrow === 'Ro')
             || (userThrow === 'Bo' && computerThrow === 'Sham'))
     {
-        return 1;
+        return 'win';
     }
 }
 
@@ -12,12 +12,12 @@ export function userLose(userThrow, computerThrow) {
         || (userThrow === 'Ro' && computerThrow === 'Sham')
             || (userThrow === 'Sham' && computerThrow === 'Bo'))
     {
-        return -1;
+        return 'lose';
     } 
 }
 
 export function gameDraw(userThrow, computerThrow) {
     if ((userThrow === computerThrow)) {
-        return 0;
+        return 'draw';
     }
 }
