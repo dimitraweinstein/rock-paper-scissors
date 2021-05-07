@@ -1,4 +1,4 @@
-import { userWin, userLose, gameDraw, randomThrow } from './utils.js';
+import { gameResult, randomThrow } from './utils.js';
 
 // import functions and grab DOM elements
 const submitButton = document.querySelector('#submit-button');
@@ -24,32 +24,29 @@ submitButton.addEventListener('click', () => {
     const chosenThrow = document.querySelector('input:checked');
     const userThrow = chosenThrow.value;
 
-    randomThrow(computerThrow);
-    userWin(userThrow, computerThrow);
-    userLose(userThrow, computerThrow);
-    gameDraw(userThrow, computerThrow);
-    
-    if (userWin === 'win') {
-        totalWins++;
-        totalGames++;
-        totalGamesDiv.textContent = `${totalGames}`;
-        gameResultsDiv.textContent = `Congratulations! ${userThrow} beats ${computerRandomThrow}. You win!`;
-    } else if (userLose === 'lose') {
-        totalLosses++;
-        totalGames++;
+console.log(gameResult(userThrow, computerRandomThrow));
+
+    if (gameResult(userThrow, computerRandomThrow) === 'win') {
+        // totalWins++;
+        // totalGames++;
+        totalGamesDiv.textContent = `${totalGames}`; 
+        userWinDiv.textContent = `Congratulations! ${userThrow} beats ${computerRandomThrow}. You win!`;
+    } else if (gameResult(userThrow, computerRandomThrow) === 'lose') {
+        // totalLosses++;
+        // totalGames++;
         totalGamesDiv.textContent = `${totalGames}`;
         gameResultsDiv.textContent = `Sorry! ${computerRandomThrow} beats ${userThrow}. You lose!`;
-    } else {
-        totalDraw++; 
-        totalGames++;
+    } else if (gameResult(userThrow, computerRandomThrow) === 'draw'); { 
+        // totalDraw++; 
+        // totalGames++;
         totalGamesDiv.textContent = `${totalGames}`;
         gameResultsDiv.textContent = `${userThrow} and ${computerRandomThrow} are the same. The game is a draw. Try again.`;
     }
 
 
-    userWinDiv.textContent = `${totalWins}`;
-    userLossesDiv.textContent = `${totalLosses}`;
-    totalDrawDiv.textContent = `${totalDraw}`;
+    // userWinDiv.textContent = `${totalWins}`;
+    // userLossesDiv.textContent = `${totalLosses}`;
+    // totalDrawDiv.textContent = `${totalDraw}`;
 
 });
     
